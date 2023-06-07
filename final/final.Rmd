@@ -87,7 +87,7 @@ Table 1 provides summary information for important gender inequalities character
 
 ```{r results='asis', echo=FALSE}
 data %>%
-  select("Death, by injury, male %","Death, by injury, female %", "Population, female", "Population, male", "GDP per capita ($)", "School enrollment, M %", "School enrollment, F %", "Unemployment, male %", "Unemployment, female %") %>% 
+  select("Death, by injury, male %","Death, by injury, female %", "Population, female", "Population, male", "GDP per capita ($)", "School enrollment, M %", "School enrollment, F %") %>% 
   descr(stats = c("mean", "sd", "min", "med", "max"), transpose = TRUE) %>% 
   xtable(caption = "Summary Statistics",
          label = "tab:summary",
@@ -111,18 +111,16 @@ In conclusion, the unemployment rates of men and women can describe the gender d
 **Figure 1**
 
 ```{r, echo=FALSE, fig.width=10, fig.height=6}
-# Load required packages
+
 library(ggplot2)
 library(gridExtra)
 
-# Create a data frame with the provided data
 data <- data.frame(
   Country = c("Belgium", "China", "Italy", "Japan", "Qatar", "Turkey", "United States", "Russian Federation", "Brazil", "South Africa"),
   Male_Unemployment = c(5.73, NA, 9.09, 2.5, 0.05, 12.33, 3.72, 4.65, 10.05, 24.22),
   Female_Unemployment = c(4.94, NA, 11.1, 2.17, 0.44, 16.41, 3.61, 4.33, 14.32, 27.09)
 )
 
-# Create separate bar plots for male and female indicators
 male_plot <- ggplot(data, aes(x = Country, y = Male_Unemployment)) +
   geom_bar(fill = "blue", stat = "identity") +
   coord_flip() +
@@ -137,7 +135,7 @@ female_plot <- ggplot(data, aes(x = Country, y = Female_Unemployment)) +
   ggtitle("Female Unemployment Rates by Country") +
   theme_bw()
 
-# Display the plots side by side
+
 grid.arrange(male_plot, female_plot, nrow = 1)
 
 ```
@@ -157,7 +155,7 @@ In conclusion, scatter plot reveal a connection between school enrollment and un
 **Figure 2**
 
 ```{r, echo=FALSE, fig.width=10, fig.height=6}
-# Create data frame with the given data
+
 data <- data.frame(
   Country = c("Belgium", "China", "Italy", "Japan", "Qatar", "Turkiye", "United States", "Russian Federation", "Brazil", "South Africa"),
   Population = c(5821746, 688179990, 30638263, 65065286, 751299, 41614734, 165599805, 77329730, 107663080, 29879107),
@@ -165,7 +163,7 @@ data <- data.frame(
   UnemploymentRate = c(5.73, NA, 9.09, 2.5, 0.05, 12.33, 3.72, 4.65, 10.05, 24.22)
 )
 
-# Create the scatter plot with plain labels
+
 ggplot(data, aes(x = SchoolEnrollment, y = UnemploymentRate)) +
   geom_point() +
   geom_text(aes(label = Country), hjust = 0, vjust = 0, size = 3, fontface = "plain") +
@@ -173,7 +171,6 @@ ggplot(data, aes(x = SchoolEnrollment, y = UnemploymentRate)) +
        y = "Unemployment Rate (%)",
        title = "Scatter Plot: School Enrollment vs. Unemployment Rate")
       
-
 
 ```
 
@@ -198,7 +195,7 @@ Finally, the graph allows us to investigate and comprehend the connection betwee
 **Figure 3**
 
 ```{r, echo=FALSE, fig.width=10, fig.height=6}
-# Create data frame with the given data
+
 data <- data.frame(
   Country = c("Belgium", "China", "Italy", "Japan", "Qatar", "Turkiye", "United States", "Russian Federation", "Brazil", "South Africa"),
   Population = c(5821746, 688179990, 30638263, 65065286, 751299, 41614734, 165599805, 77329730, 107663080, 29879107),
@@ -206,14 +203,12 @@ data <- data.frame(
   GDPCapita = c(46638.68131, 10143.8382, 33673.75096, 40458.00188, 62637.27511, 9103.043375, 65120.39466, 11536.25098, 8845.259118, 6688.787271)
 )
 
-# Create the scatter plot with plain labels
 ggplot(data, aes(x = SchoolEnrollment, y = GDPCapita)) +
   geom_point() +
   geom_text(aes(label = Country), hjust = 0, vjust = 0, size = 3, fontface = "plain") +
   labs(x = "School Enrollment (% gross) - Primary, Female",
        y = "GDP per Capita (Current US$)",
        title = "Scatter Plot: School Enrollment vs. GDP per Capita")
-
 
 ```
 
