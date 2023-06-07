@@ -1,7 +1,7 @@
 ---
-title: "Title"
+title: "Exploring the Intersection of Gender, Ethnicity, and Physical Activity in Global Adolescents"
 author: 
-  - Last Name, First Name[^1]
+  - Huseynov, Ulvi
 bibliography: ../bibliography/biblio.bib
 csl: ../csl/apa.csl
 header-includes:
@@ -25,50 +25,55 @@ urlcolor: blue
 fontsize: 12pt
 biblio-style: apalike
 abstract: |
-    Write your abstract here.
+   Gender inequality is a continuing problem that affects many aspects of life, including welfare, schooling, and job chances. The influence of gender inequality in schooling, employment, and physical activity on economic growth and health outcomes is investigated in this literature review. This review investigates the magnitude of gender differences and their ramifications by analyzing data from various countries such as Belgium, China, Italy, Japan, Qatar, Turkey, the United States, the Russian Federation, Brazil, and South Africa. The findings underline the necessity of evidence-based policies and initiatives for effectively addressing gender inequality. Data scientists and politicians may use this data to make informed decisions and strive toward minimizing gender inequities, which will promote economic growth and improve health outcomes.
 ---
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(cache = FALSE, echo = TRUE, message = FALSE, warning = FALSE)
 ```
 
 <!-- ======================================================================= -->
+
 <!-- ============================== FOOTNOTES ============================== -->
+
 <!-- ======================================================================= -->
-[^1]: Student ID, [Github Repo](https://github.com/YOUR_USER_NAME_HERE/YOUR_REPO_NAME_HERE)
-
-# Important Information About Midterm
-
-\colorbox{BurntOrange}{WRITE YOUR GITHUB REPO LINK ON LINE 37 IN THIS FILE!}
-
-**Project Proposal submisson will be done by uploading a zip file to the ekampus system along with the Github repo link. If you do not upload a zip file to the system and do not provide a Github repo link, you will be deemed not to have entered the midterm and final exams.**
-
-**You must upload your project folder (`YourStudentID.zip` file) to *ekampus.ankara.edu.tr* until 9 June 2023, 23:59.**
-
-\colorbox{WildStrawberry}{Read the README.md file in the project folder for more information.}
 
 # Introduction
-This outline has been created to assist you in writing your project assignment. You should cite all the sources you use, articles, presentations, projects, etc. Quoting and referencing gives readers the opportunity to access the resources you refer. **Even though you use your own words, if you are conveying the ideas of others in your work, you have to document the source of these ideas. Otherwise, you are committing academic plagiarism.** For example, you can refer to @aydinonat:2007 for academic writing rules. You can find lots of online resources on this topic.
 
-The sections in your project assignment should definitely include the sections in this text. Apart from the sections used here, you can use different subsections. When writing your project, use this file as a draft and adapt its content to your purposes.
-
-In this section, mention the purpose and importance of your work in a few paragraphs.
+Gender inequality is a pervasive problem in many parts of the world, affecting various aspects of life such as health, education, and employment opportunities. It is essential to understand the effects of gender inequality on different aspects of society to develop effective policies and strategies for reducing these disparities. In this literature review, we explore the impact of gender inequality in education, employment, and physical activity on economic growth and health outcomes.Understanding the findings of these studies is crucial for data scientists and policymakers alike to inform evidence-based decision-making for reducing gender inequalities.
 
 ## Literature Review
 
-In this section, discuss the articles you have read on the subject by giving references. This is a narrative citation @chang:2013. This one is a parenthetical citation [@chang:2013]. **Do not summarize each article individually under a separate title.** In the literature review section, **at least six** articles must be cited [@newbold:2003; @verzani:2014; @wickham:2014; @wooldridge:2015a].
+Several studies have investigated the impact of gender inequality in education on economic growth.[@klasen2009impact] finds that gender inequality in education and employment negatively affects economic growth in a panel of countries. Similarly[@mekkodathil2016occupational]found that gender inequalities in education have negative economic impacts. In contrast,[@ricardo2022gender] explored gender inequalities in physical activity and found that it negatively impacts the health outcomes of adolescents from Global South countries.[@stamarski2015gender]
 
-# Data
-In this section, discuss the source of the data set you use in your study, if you have done any operation on the raw data, these operations and the summary statistics about the data set. In this section, it is mandatory to have a table (Table \ref{tab:summary}) containing summary statistics (mean, standard deviation, minimum, maximum, etc. values) of all variables. Make the necessary references to your tables as shown in the previous sentence [@perkins:1991].
+The effects of gender inequality in employment have also been studied. World Bank (2021) found that gender gaps in employment result in economic inefficiencies and losses. Additionally, [@mekkodathil2016occupational] investigated occupational injuries in workers from different ethnicities and found that gender differences in occupational injuries are prevalent and require attention. Finally,[@world2009guide] guide provides a comprehensive framework for identifying and measuring the economic consequences of disease and injury, emphasizing the need to consider the social and economic impact of health conditions on individuals and society as a whole.[@kitov2006inflation] The findings of these studies demonstrate the importance of continued research and policy development aimed at addressing gender inequalities in education, employment, and physical activity.
 
-R codes for the analysis should start in this section. In this section, you should include the codes that imports the data set into R and the codes that generate summary statistics.
+## Data set
 
-```{r}
+The Gender Statistics database dataset contains information on numerous metrics relating to gender inequality in various nations.. Each column has a description and a one-sentence explanation:
+
+- **Country Name**: The name of the country.
+- **Time**: The year of the data.
+- **Death, by injury, male %**: The percentage of male deaths caused by injuries.
+- **Death, by injury, female %**: The percentage of female deaths caused by injuries.
+- **Population, female**: The female population count.
+- **Population, male**: The male population count.
+- **GDP per capita ($)**: The Gross Domestic Product per capita in US dollars.
+- **School enrollment, M %**: The percentage of male school enrollment.
+- **School enrollment, F %**: The percentage of female school enrollment.
+- **Unemployment, male %**: The percentage of unemployed males.
+- **Unemployment, female %**: The percentage of unemployed females.
+
+All the variables used in data are numerical.The dataset consists of 51 observations and 11 variables. Each observation represents a country, and the variables provide information on gender-related indicators for those countries.
+
+This dataset provides a comprehensive view of gender-related statistics across countries, enabling comparisons and analysis to identify areas for improvement in gender equality. It is a valuable resource for policymakers, researchers, and organizations working towards fostering gender equality and social progress.
+
+```{r, echo=FALSE}
 library(tidyverse)
 library(here)
-survey <- read_csv(here("data/survey.csv"))
+library(readxl)
+data <- read_xlsx(here("data/mydata.xlsx"))
 ```
-
-Note that code options are edited in some of the code chunks in the Rmd file.
 
 ```{r, echo=FALSE}
 library(xtable) 
@@ -76,49 +81,161 @@ library(summarytools)
 st_options(lang = "en")
 ```
 
-With the `echo=FALSE` option, prevent the codes from appearing in the derived pdf file and report your results in tables.
+## Data summary statistics
+
+Table 1 provides summary information for important gender inequalities characteristics. The percentage of female deaths caused by injuries is 4.02% (standard deviation 1.68%), while the percentage of male deaths is 8.50% (standard deviation 4.83%). The GDP per capita averages \$31,580.04 (standard deviation: \$26,424.87), with values ranging from \$2,047.23 to \$112,621.82. The average population count for females is 48,081,304.73 (std. dev. 132,363,420.10) and 49,032,641.49 (std. dev. 139,582,052.67). In terms of school enrolment, the mean proportion for females is 101.32% (standard deviation 6.86%), while the mean percentage for boys is 101.12% (standard deviation 6.79%). Gender inequalities in mortality rates, economic production, population distribution, and school enrollment are highlighted in these figures.
 
 ```{r results='asis', echo=FALSE}
-survey %>%
-  select("sex", "credits", "handedness", "height", "handspan") %>% 
+data %>%
+  select("Death, by injury, male %","Death, by injury, female %", "Population, female", "Population, male", "GDP per capita ($)", "School enrollment, M %", "School enrollment, F %", "Unemployment, male %", "Unemployment, female %") %>% 
   descr(stats = c("mean", "sd", "min", "med", "max"), transpose = TRUE) %>% 
   xtable(caption = "Summary Statistics",
          label = "tab:summary",
          align = c("l", "c", "c", "c", "c", "c")) %>% 
-  print(booktabs = TRUE, comment = FALSE, caption.placement = "top")
-```
+  print(booktabs = TRUE, comment = FALSE, caption.placement = "top") 
 
+```
 
 # Methods and Data Analysis
-In this section describe the methods that you use to achieve the purpose of the study. You should use the appropriate analysis methods (such as hypothesis tests and correlation analysis) that we covered in the class. If you want, you can also use other methods that we haven't covered. If you think some method is more suitable for the purpose of the analysis and the data set, you can use that method [@newbold:2003; @verzani:2014; @wickham:2014; @wooldridge:2015a].
 
-For example, if you are performing regression analysis, discuss your predicted equation in this section. Write your equations and mathematical expressions using $LaTeX$.
+  **The analysis include 10 observations for graphs as they were representing different geographical patterns and varieties** .
 
-$$
-Y_t = \beta_0 + \beta_N N_t + \beta_P P_t + \beta_I I_t + \varepsilon_t
-$$
+## Data Analysis of Rates of Male and Female Unemployment by Nation
 
-This section should also include different tables and plots. You can add histograms, scatter plots (such as Figure \@ref(fig:plot)), box plots, etc. Make the necessary references to your figures as shown in the previous sentence.
+The unemployment rates for men and women in particular nations are shown in bar plots. Understanding the differences and patterns in the data can be gained by analyzing *figure 1*
 
+Belgium, Japan, Qatar, and the United States all have male unemployment rates that are considerably lower than those of other nations. Nevertheless, Turkey, South Africa, and Brazil have higher unemployment rates. These variations imply that the economies, job markets, and employment opportunities for men vary across the nations. Italy, Japan, Qatar, and the United States all have relatively lower female unemployment rates than other nations. This suggests that women in these nations have better employment prospects and more favorable labor market circumstances. The higher female unemployment rates in Turkey, Brazil, and South Africa stand out, indicating that there may be obstacles and difficulties for women in finding suitable employment opportunities.
 
-```{r plot, fig.align='center', fig.cap='An Awesome Plot'}
-survey %>% 
-  ggplot(aes(x = handedness, y = handspan)) +
-  geom_point() +
-  geom_smooth() +
-  scale_x_continuous("Handedness") + 
-  scale_y_continuous("Handspan")
+In conclusion, the unemployment rates of men and women can describe the gender disparities in the labor market. Most countries tend to have higher men's unemployment rates than the women's unemployment rate. This demonstrates how crucial it is to address gender disparities, advance equal employment opportunities, and put supportive policies in place to lessen inequalities and promote inclusive economic growth.
+
+**Figure 1**
+
+```{r, echo=FALSE, fig.width=10, fig.height=6}
+# Load required packages
+library(ggplot2)
+library(gridExtra)
+
+# Create a data frame with the provided data
+data <- data.frame(
+  Country = c("Belgium", "China", "Italy", "Japan", "Qatar", "Turkey", "United States", "Russian Federation", "Brazil", "South Africa"),
+  Male_Unemployment = c(5.73, NA, 9.09, 2.5, 0.05, 12.33, 3.72, 4.65, 10.05, 24.22),
+  Female_Unemployment = c(4.94, NA, 11.1, 2.17, 0.44, 16.41, 3.61, 4.33, 14.32, 27.09)
+)
+
+# Create separate bar plots for male and female indicators
+male_plot <- ggplot(data, aes(x = Country, y = Male_Unemployment)) +
+  geom_bar(fill = "blue", stat = "identity") +
+  coord_flip() +
+  labs(x = "Country", y = "Male Unemployment (%)") +
+  ggtitle("Male Unemployment Rates by Country") +
+  theme_bw()
+
+female_plot <- ggplot(data, aes(x = Country, y = Female_Unemployment)) +
+  geom_bar(fill = "red", stat = "identity") +
+  coord_flip() +
+  labs(x = "Country", y = "Female Unemployment (%)") +
+  ggtitle("Female Unemployment Rates by Country") +
+  theme_bw()
+
+# Display the plots side by side
+grid.arrange(male_plot, female_plot, nrow = 1)
+
 ```
 
+## Data Analysis for Relationship between School Enrollment and Unemployment Rate among Male
 
-# Conclusion
-Summarize the results of your analysis in this section. Discuss to what extent your results responded to the research question you identified at the beginning and how this work could be improved in the future.
+The scatter plot compares the GDP per Capita (Current US\$) and the School Enrollment (% gross) for females in primary education for ten various nations.We can see a number of significant conclusions.
 
-**References section is created automatically by Rmarkdown. There is no need to change the references section in the draft file.**
+First, it appears that the relationship between school enrollment and GDP per capita is improving. The GDP per capita of nations with higher school enrollment is typically higher. This implies that school spending, especially primary education for female, can support economic growth and prosperity.Regardless of the percentage of students enrolled in school, every country displays a different unemployment rate. For instance, despite having different levels of student enrollment, Qatar and the United States both have low unemployment rates. In contrast, despite having distinct levels of enrollment in schools, South Africa and Turkey both have high unemployment rates. This suggests that other underlying factors have a big impact on how these countries' job markets behave.
 
-**_You shouldn't delete the last 3 lines. Those lines are required for References section._**
+In this analysis, China stands out as an anomaly. Despite having a sizable population and a high percentage of students enrolled in schools, data on the unemployment rate are not available. As a result, this graph cannot be used to draw any conclusions about China's connection between school enrollment and unemployment rate. Comparing various nations is possible by looking at the labels on the graph. For instance, relatively high school enrollment and lower unemployment rates are found in Belgium and Japan, raising the possibility of a causal relationship. However, despite having relatively lower school enrollment, South Africa and Turkey have higher unemployment rates, suggesting the presence of additional influencing factors in their labor markets.
+
+It's crucial to note that this analysis only considers how male primary school enrollment and unemployment rates relate to one another. It would be vital to take into account additional elements like quality of schools, higher education enrollment, and labor market dynamics in order to gain a more thorough understanding.
+
+In conclusion, scatter plot reveal a connection between school enrollment and unemployment rate and serve as a starting point for further investigation. The complexities of labor market dynamics across countries necessitate the inclusion of additional variables and analyses in order to gain a more complete understanding of the factors influencing rates of unemployment.
+
+**Figure 2**
+
+```{r, echo=FALSE, fig.width=10, fig.height=6}
+# Create data frame with the given data
+data <- data.frame(
+  Country = c("Belgium", "China", "Italy", "Japan", "Qatar", "Turkiye", "United States", "Russian Federation", "Brazil", "South Africa"),
+  Population = c(5821746, 688179990, 30638263, 65065286, 751299, 41614734, 165599805, 77329730, 107663080, 29879107),
+  SchoolEnrollment = c(103.1920395, 102.5646133, 99.97960663, 97.9161911, 105.1170807, 96.45198822, 101.3437424, 103.6586838, 105.6768417, 96.61685944),
+  UnemploymentRate = c(5.73, NA, 9.09, 2.5, 0.05, 12.33, 3.72, 4.65, 10.05, 24.22)
+)
+
+# Create the scatter plot with plain labels
+ggplot(data, aes(x = SchoolEnrollment, y = UnemploymentRate)) +
+  geom_point() +
+  geom_text(aes(label = Country), hjust = 0, vjust = 0, size = 3, fontface = "plain") +
+  labs(x = "School Enrollment (% gross) - Primary, Male",
+       y = "Unemployment Rate (%)",
+       title = "Scatter Plot: School Enrollment vs. Unemployment Rate")
+      
+
+
+```
 
 \newpage
-# References {#references}
-<div id="refs"></div>
 
+## Data Analysis for Relationship between School Enrollment and GDP per Capita among Female
+
+The scatter plot provided compares the school enrollment rate (% gross) of females in primary education with GDP per capita (current US dollars) for a group of countries.
+
+We can see the correlation between female school enrollment and the financial wellness of the countries represented in the scatter plot. Each data point on the plot represents a country, with the x-coordinate indicating the rate of school enrollment and the y-coordinate representing GDP per capita.
+
+We can use the scatter plot to figure out patterns and trends in the data. Most countries group around the center of the school enrollment range, with a few exceptions at either end. Similarly, GDP per capita varies by country, with a few outliers having significantly higher values. The scatter plot analysis provides several compelling observations. Countries with higher school enrolment rates have higher GDP per capita, indicating a link between education and economic development. This conclusion supports the view that education is critical to economic development and human capital growth.
+
+By referring to the labels connected to each data point, we may also identify certain countries on the plot. Belgium, Italy, and the United States, for example, have relatively greater levels of female school enrolment and GDP per capita, reflecting strong educational and economic positions. Countries such as China and South Africa, on the other hand, have modest school enrollment rates but variable GDP per capita levels. Furthermore, despite lower school enrollment rates, certain nations, such as Qatar and Turkey, have relatively high GDP per capita. This shows that other variables, such as natural resources or certain industries, may be contributing to these countries' economic development.
+
+It is critical to remember that the scatter plot is a graphical representation of the data that illustrates connections rather than causality. Other factors, such as government policies, facilities, and cultural features, might have an impact on the economic growth of a nation.
+
+Finally, the graph allows us to investigate and comprehend the connection between female school attendance and GDP per capita in various countries. With some variances and outliers, the figure demonstrates a positive association between education and economic prosperity. To completely comprehend the relationships between education and economic development, a comprehensive analysis would need to take into account more aspects and perform additional research.
+
+\newpage
+
+**Figure 3**
+
+```{r, echo=FALSE, fig.width=10, fig.height=6}
+# Create data frame with the given data
+data <- data.frame(
+  Country = c("Belgium", "China", "Italy", "Japan", "Qatar", "Turkiye", "United States", "Russian Federation", "Brazil", "South Africa"),
+  Population = c(5821746, 688179990, 30638263, 65065286, 751299, 41614734, 165599805, 77329730, 107663080, 29879107),
+  SchoolEnrollment = c(103.1920395, 102.5646133, 99.97960663, 97.9161911, 105.1170807, 96.45198822, 101.3437424, 103.6586838, 105.6768417, 96.61685944),
+  GDPCapita = c(46638.68131, 10143.8382, 33673.75096, 40458.00188, 62637.27511, 9103.043375, 65120.39466, 11536.25098, 8845.259118, 6688.787271)
+)
+
+# Create the scatter plot with plain labels
+ggplot(data, aes(x = SchoolEnrollment, y = GDPCapita)) +
+  geom_point() +
+  geom_text(aes(label = Country), hjust = 0, vjust = 0, size = 3, fontface = "plain") +
+  labs(x = "School Enrollment (% gross) - Primary, Female",
+       y = "GDP per Capita (Current US$)",
+       title = "Scatter Plot: School Enrollment vs. GDP per Capita")
+
+
+```
+
+## Prediction
+
+$$
+Unemployment = \beta_0 + \beta_1 \text{Population male} + \beta_2 \text{Population female} + \beta_3  \text{Death rate} + \beta_4 \text{School enrollment} + \varepsilon
+$$
+
+A linear regression model for predicting the unemployment rate is represented by the equation. The impacts of population male, population female, death rate, and school enrollment on the unemployment rate are represented by the coefficients ß0, ß1, ß2, ß3, and ß4. Based on the available data, the model seeks to estimate these coefficients and use them to generate predictions or comprehend the link between the independent variables and the unemployment rate in a given demographic or setting.
+
+# Conclusion
+
+Gender inequality is a continuing problem that affects many aspects of life, including welfare, schooling, and job chances. The influence of gender inequality in schooling, employment, and physical activity on economic growth and health outcomes is investigated in this literature review. This review investigates the magnitude of gender differences and their ramifications by analyzing data from various countries such as Belgium, China, Italy, Japan, Qatar, Turkey, the United States, the Russian Federation, Brazil, and South Africa. The findings underline the necessity of evidence-based policies and initiatives for effectively addressing gender inequality. Data scientists and politicians may use this data to make informed decisions and strive toward minimizing gender inequities, which will promote economic growth and improve health outcomesGender inequality remains a serious issue that affects many parts of life, including welfare, education, and career chances. Using data from Belgium, China, Italy, Japan, Qatar, Turkey, the United States, the Russian Federation, Brazil, and South Africa, this literature review investigates the influence of gender inequality in schooling, employment, and physical activity on economic growth and health outcomes.
+
+The findings emphasize the need for evidence-based initiatives and approaches in effectively addressing gender inequality. Gender differences in education and employment have a negative economic impact, stifling progress and resulting in inefficiencies and losses. Furthermore, gender disparities in physical activity might harm individuals' health outcomes, particularly among Global South countries. This review's dataset contains useful gender-related information such as mortality rates, population counts, GDP per capita, school enrolment, and unemployment rates. Government officials, data scientists, and researchers can acquire insights into gender discrepancies and find opportunities for improvement in gender equality by evaluating these characteristics. The summary figures reveal gender disparities in mortality rates, with males dying from injuries at a higher rate. GDP per capita reflects the average economic output per person, but school enrollment and unemployment rates highlight gaps in education and work possibilities.
+
+Overall, this review of the literature underlines the significance of ongoing study and policy creation to address gender disparities in education, employment, and physical activity. Societies can stimulate economic growth and enhance health outcomes for all persons by encouraging gender equality. The information supplied can be a significant resource for politicians, researchers, and groups working to make society more equal and inclusive.
+
+\newpage
+
+# References {#references}
+
+::: {#refs}
+:::
